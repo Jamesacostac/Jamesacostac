@@ -1,0 +1,22 @@
+<html>
+    <head>
+
+    </head>
+    <nav>
+        
+    </nav>
+    <body>
+        <h1>Recetario</h1>
+        <ul>
+            {% for receta in recetas %}
+                <li>
+                    <a href="{% url 'receta_detalle' receta.id %}">{{ receta.titulo }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'receta_nueva' %}">Agregar nueva receta</a>
+
+    </body>
+    <footer></footer>
+
+</html>
