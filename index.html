@@ -113,5 +113,18 @@
     </div>
     </footer>
 
+    <script>
+    // Año dinámico en footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Menú móvil accesible
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn.addEventListener('click', ()=>{
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      menu.hidden = open; // si estaba abierto, ocultar
+      menu.style.display = open ? 'none' : 'flex';
+    });
+  </script>
 
 </html>
