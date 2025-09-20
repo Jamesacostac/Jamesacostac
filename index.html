@@ -26,6 +26,29 @@
     </div>
   </nav>
 
+    <header class="hero container" id="inicio">
+    <div class="hero-grid">
+      <div>
+        <span class="kicker">Plantilla • Cocina fácil</span>
+        <h1>Explora, cocina y comparte tus recetas favoritas</h1>
+        <p class="lead">Una base limpia y moderna para tu sitio de recetas: busca preparaciones, navega por categorías y recoge consejos de cocina probados.</p>
+        <form class="search" onsubmit="event.preventDefault(); alert('Buscar: ' + this.q.value)">
+          <input name="q" type="search" placeholder="Busca una receta (ej. lasaña, arepas, tiramisú)" aria-label="Buscar recetas">
+          <button class="btn" type="submit">Buscar</button>
+        </form>
+      </div>
+      <article class="hero-card" aria-labelledby="receta-destacada">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&amp;w=1600&amp;auto=format&amp;fit=crop" alt="Plato de pasta casera con tomate y albahaca">
+        <div class="p">
+          <span class="tag">Destacada</span>
+          <h2 id="receta-destacada">Pasta pomodoro en 20 minutos</h2>
+          <p class="muted">Tomates maduros, ajo, albahaca y un chorrito de aceite de oliva. Cena lista sin complicaciones.</p>
+        </div>
+      </article>
+    </div>
+  </header>
+
+
         <h1>Recetario</h1>
         <ul>
             {% for receta in recetas %}
@@ -37,6 +60,7 @@
         <a href="{% url 'receta_nueva' %}">Agregar nueva receta</a>
 
     </body>
+
     <footer></footer>
 
 </html>
