@@ -1,11 +1,31 @@
 <html>
     <head>
+            <link rel="stylesheet" href="style.css">
+
 
     </head>
-    <nav>
-        
-    </nav>
     <body>
+
+    <nav class="navbar" aria-label="Principal">
+    <div class="container nav-inner">
+      <a class="brand" href="#inicio" aria-label="Inicio">
+        <span class="logo">🍳</span>
+        <span>Recetas Caseras</span>
+      </a>
+      <div class="nav-links" role="menubar">
+        <a href="#recetas" role="menuitem">Recetas</a>
+        <a href="#categorias" role="menuitem">Categorías</a>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú">☰</button>
+    </div>
+    <div class="container">
+      <div id="mobileMenu" class="menu" hidden="">
+        <a href="#recetas">Recetas</a>
+        <a href="#categorias">Categorías</a>
+      </div>
+    </div>
+  </nav>
+
         <h1>Recetario</h1>
         <ul>
             {% for receta in recetas %}
