@@ -67,3 +67,9 @@
     .newsletter{display:grid; grid-template-columns: 1.2fr .8fr; gap:18px; align-items:center; background:linear-gradient(180deg, #fff, #fff7eb); border:1px solid #efe7da; border-radius:var(--radius); padding:20px}
     .tips{display:grid; gap:10px}
     .tip{background:#fff; border:1px solid #efe7da; border-radius:12px; padding:12px}
+
+    footer{margin-top:30px; padding:24px 0; border-top:1px solid #efe7da; color:var(--muted)}
+    .foot{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px}
+    .foot a{color:var(--muted)}
+
+    
