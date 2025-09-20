@@ -10,6 +10,10 @@
       --radius: 16px;
       --maxw: 1100px;
     }
+
+    #t-consejos{
+      padding-top: 50px;
+    }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
