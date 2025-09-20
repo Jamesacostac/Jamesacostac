@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Demo Receta — Solo visual</title>
+  <meta name="description" content="Demostración estática de una receta con pasos como tarjetas: imagen a la izquierda e información a la derecha." />
+  <style>
+    :root{
+      --bg:#fffdf9; --card:#ffffff; --text:#262626; --muted:#6b7280;
+      --brand:#f59e0b; --brand2:#ef4444; --ring:rgba(245,158,11,.35);
+      --shadow:0 10px 25px rgba(0,0,0,.07); --radius:16px; --maxw:980px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; background:var(--bg); color:var(--text); line-height:1.6}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--maxw); margin:0 auto; padding:20px}
+
+
+    /* Header */
+    header{position:sticky; top:0; z-index:30; background:rgba(255,253,249,.9); backdrop-filter:blur(8px); border-bottom:1px solid #efe7da}
+    .h-inner{display:flex; align-items:center; justify-content:space-between; height:66px}
+    .brand{display:flex; gap:10px; align-items:center; font-weight:700}
+    .brand .logo{display:grid; place-items:center; width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--brand),var(--brand2)); color:#fff}
+    .pill{display:inline-block; padding:4px 8px; border-radius:999px; border:1px solid #efe7da; background:#fff; font-size:12px; color:var(--muted)}
+
+    /* Hero */
+    .hero{display:grid; grid-template-columns:1.1fr .9fr; gap:18px; align-items:center; padding:16px 0}
+    .hero h1{font-size:clamp(26px,5vw,36px); margin:.2rem 0 .4rem}
+    .hero p{color:var(--muted); margin:.2rem 0}
+    .hero img{width:100%; height:240px; object-fit:cover; border-radius:14px; border:1px solid #efe7da}
+
+    /* Steps */
+    h2.section-title{font-size:clamp(22px,4vw,28px); margin:18px 0 10px}
+    .steps{display:grid; gap:16px}
+    .step-card{display:grid; grid-template-columns:240px 1fr; gap:14px; align-items:stretch; background:var(--card); border:1px solid #efe7da; border-radius:14px; box-shadow:var(--shadow); overflow:hidden}
+    .step-card img{width:100%; height:100%; object-fit:cover}
+    .step-body{padding:14px}
+    .step-head{display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .badge{display:inline-block; background:var(--brand2); color:#fff; font-size:12px; padding:4px 8px; border-radius:999px}
+    .muted{color:var(--muted); font-size:14px}
+
+    /* Footer */
+    footer{margin-top:28px; padding:20px 0; border-top:1px solid #efe7da; color:var(--muted); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px}
+
+    @media (max-width: 860px){
+      .hero{grid-template-columns:1fr}
+    }
+    @media (max-width: 720px){
+      .step-card{grid-template-columns:1fr}
+      .step-card img{height:220px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container h-inner">
+      <a class="brand" href="#"><span class="logo">🍳</span><span>Receta demo</span></a>
+      <small class="pill">Solo visual</small>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero / Encabezado de receta -->
+    <section class="hero" aria-labelledby="t-recipe">
+      <div>
+        <h1 id="t-recipe">&nbsp;</h1>
+        <p id="t-desc"></p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:6px">
+          <span class="pill" id="pill-time" hidden></span>
+          <span class="pill" id="pill-servings" hidden></span>
+          <span class="pill" id="pill-difficulty" hidden></span>
+        </div>
+      </div>
+      <img id="hero-img" src="" alt="Imagen principal de la receta" />
+    </section>
+
+    <!-- Lista de pasos -->
+    <h2 class="section-title">Pasos</h2>
+    <section id="steps" class="steps" aria-label="Lista de pasos de la receta"></section>
+  </main>
+
+  <footer class="container">
+    <small>© <span id="year"></span> Demo de receta — Solo visual.</small>
+    <small style="float:right; color:var(--muted)">Imágenes ilustrativas de Unsplash.</small>
+  </footer>
+
+  <script>
+    // Rellena el año del footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /**
+     * Estructura de ejemplo del JSON esperado:
+     * {
+     *   "title": "Pasta pomodoro en 20 minutos",
+     *   "description": "Tomates maduros, ajo y albahaca fresca...",
+     *   "heroImage": "https://...",
+     *   "time": "20 min",
+     *   "servings": 2,
+     *   "difficulty": "Fácil",
+     *   "steps": [
+     *     { "title": "Mise en place", "time": "5 min", "image": "https://...", "text": "Lava los tomates..." },
+     *     { "title": "Sofríe el ajo", "time": "2 min", "image": "https://...", "text": "Calienta aceite..." }
+     *   ]
+     * }
+     */
+
+    function feedRecipeFromJSON(data){
+      // Encabezado
+      const t = document.getElementById('t-recipe');
+      const d = document.getElementById('t-desc');
+      const img = document.getElementById('hero-img');
+      const pillTime = document.getElementById('pill-time');
+      const pillSrv = document.getElementById('pill-servings');
+      const pillDiff = document.getElementById('pill-difficulty');
+
+      t.textContent = data.title || 'Receta sin título';
+      d.textContent = data.description || '';
+
+      if(data.heroImage){ img.src = data.heroImage; img.alt = data.title ? `Imagen de ${data.title}` : 'Imagen principal de la receta'; }
+      else { img.removeAttribute('src'); img.alt = 'Imagen principal de la receta'; }
+
+      if(data.time){ pillTime.textContent = `⏱️ ${data.time}`; pillTime.hidden = false; } else { pillTime.hidden = true; }
+      if(typeof data.servings !== 'undefined' && data.servings !== null && data.servings !== ''){
+        pillSrv.textContent = `🍽️ ${data.servings} porciones`;
+        pillSrv.hidden = false;
+      } else { pillSrv.hidden = true; }
+      if(data.difficulty){ pillDiff.textContent = `🍝 ${data.difficulty}`; pillDiff.hidden = false; } else { pillDiff.hidden = true; }
+
+      // Pasos
+      const stepsRoot = document.getElementById('steps');
+      stepsRoot.innerHTML = '';
+      (data.steps || []).forEach((st, idx) => {
+        const card = document.createElement('article');
+        card.className = 'step-card';
+        const imgURL = st.image || '';
+        const imgAlt = st.title ? `Paso ${idx+1}: ${st.title}` : `Paso ${idx+1}`;
+        card.innerHTML = `
+          <img src="${imgURL}" alt="${imgAlt}" />
+          <div class="step-body">
+            <div class="step-head">
+              <div><span class="badge">Paso ${idx+1}</span> <strong style="margin-left:8px">${st.title || 'Sin título'}</strong></div>
+              <div class="muted">${st.time ? '⏱️ ' + st.time : ''}</div>
+            </div>
+            <p style="margin:.5rem 0 0">${(st.text || '').replace(/\n/g,'<br/>')}</p>
+          </div>`;
+        stepsRoot.appendChild(card);
+      });
+    }
+
+    // Carga desde URL opcional
+    async function feedRecipeFromURL(url){
+      const res = await fetch(url);
+      if(!res.ok) throw new Error('No se pudo cargar el JSON: ' + res.status);
+      const data = await res.json();
+      feedRecipeFromJSON(data);
+      return data;
+    }
+
+    // Demo automático (puedes quitar este bloque en producción)
+    (function demo(){
+      const demoData = [{
+        title: 'Pasta pomodoro en 20 minutos',
+        description: 'Tomates maduros, ajo y albahaca fresca. Una receta rápida, aromática y con pocos ingredientes.',
+        heroImage: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1600&auto=format&fit=crop',
+        time: '20 min',
+        servings: 2,
+        difficulty: 'Fácil',
+        steps: [
+          { title: 'Mise en place', time: '5 min', image: 'https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?q=80&w=1600&auto=format&fit=crop', text: 'Lava los tomates, pela el ajo y prepara hojas de albahaca. Corta los tomates en cubos pequeños.' },
+          { title: 'Sofríe el ajo', time: '2 min', image: 'https://images.unsplash.com/photo-1568158879083-c42864fb09b0?q=80&w=1600&auto=format&fit=crop', text: 'Calienta aceite de oliva en una sartén amplia. Agrega el ajo laminado y dóralo ligeramente sin quemar.' },
+          { title: 'Cocina el tomate', time: '8 min', image: 'https://images.unsplash.com/photo-1476127390673-0e4b7a4b1653?q=80&w=1600&auto=format&fit=crop', text: 'Añade el tomate picado, una pizca de sal y cocina a fuego medio hasta que se vuelva una salsa jugosa.' },
+          { title: 'Cuece la pasta', time: '7–9 min', image: 'https://images.unsplash.com/photo-1523987355523-c7b5b0dd90c3?q=80&w=1600&auto=format&fit=crop', text: 'Hierve la pasta en abundante agua con sal hasta que esté al dente. Reserva una taza del agua de cocción.' },
+          { title: 'Mezcla y emulsiona', time: '2 min', image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=1600&auto=format&fit=crop', text: 'Pasa la pasta a la sartén con la salsa. Agrega un chorrito del agua de cocción y saltea para emulsionar.' },
+
+        ]
+      }];
+      const params = new URLSearchParams(window.location.search);
+      const receta = params.get("receta"); 
+      feedRecipeFromJSON(demoData[receta-1]);
+    })();
+  </script>
+</body>
+</html>
