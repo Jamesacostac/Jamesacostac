@@ -80,22 +80,6 @@
     // Rellena el año del footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    /**
-     * Estructura de ejemplo del JSON esperado:
-     * {
-     *   "title": "Pasta pomodoro en 20 minutos",
-     *   "description": "Tomates maduros, ajo y albahaca fresca...",
-     *   "heroImage": "https://...",
-     *   "time": "20 min",
-     *   "servings": 2,
-     *   "difficulty": "Fácil",
-     *   "steps": [
-     *     { "title": "Mise en place", "time": "5 min", "image": "https://...", "text": "Lava los tomates..." },
-     *     { "title": "Sofríe el ajo", "time": "2 min", "image": "https://...", "text": "Calienta aceite..." }
-     *   ]
-     * }
-     */
-
     function feedRecipeFromJSON(data){
       // Encabezado
       const t = document.getElementById('t-recipe');
