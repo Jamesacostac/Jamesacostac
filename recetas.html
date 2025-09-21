@@ -80,9 +80,11 @@
     <section id="steps" class="steps" aria-label="Lista de pasos de la receta"></section>
   </main>
 
-  <footer class="container">
-    <small>© <span id="year"></span> Demo de receta — Solo visual.</small>
-    <small style="float:right; color:var(--muted)">Imágenes ilustrativas de Unsplash.</small>
+  <footer class="container" >
+     <div class="container foot" style="    text-align: right;
+    width
+: 100%;">
+    <small>© <span id="year">2025</span> La Buena Cocina. Hecho con ❤️ y buenos ingredientes.</small>
   </footer>
 
   <script>
@@ -345,7 +347,7 @@
 ;
       const params = new URLSearchParams(window.location.search);
       const receta = params.get("receta"); 
-      feedRecipeFromJSON();
+      feedRecipeFromJSON(demoData[receta-1]);
     })();
   </script>
 </body>
