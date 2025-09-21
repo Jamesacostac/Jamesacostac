@@ -2,13 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
+  <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Demo Receta — Solo visual</title>
   <meta name="description" content="Demostración estática de una receta con pasos como tarjetas: imagen a la izquierda e información a la derecha." />
   <style>
     :root{
       --bg:#fffdf9; --card:#ffffff; --text:#262626; --muted:#6b7280;
-      --brand:#f59e0b; --brand2:#ef4444; --ring:rgba(245,158,11,.35);
       --shadow:0 10px 25px rgba(0,0,0,.07); --radius:16px; --maxw:980px;
     }
     *{box-sizing:border-box}
@@ -30,15 +30,7 @@
     .hero p{color:var(--muted); margin:.2rem 0}
     .hero img{width:100%; height:240px; object-fit:cover; border-radius:14px; border:1px solid #efe7da}
 
-    /* Steps */
-    h2.section-title{font-size:clamp(22px,4vw,28px); margin:18px 0 10px}
-    .steps{display:grid; gap:16px}
-    .step-card{display:grid; grid-template-columns:240px 1fr; gap:14px; align-items:stretch; background:var(--card); border:1px solid #efe7da; border-radius:14px; box-shadow:var(--shadow); overflow:hidden}
-    .step-card img{width:100%; height:100%; object-fit:cover}
-    .step-body{padding:14px}
-    .step-head{display:flex; align-items:center; justify-content:space-between; gap:10px}
-    .badge{display:inline-block; background:var(--brand2); color:#fff; font-size:12px; padding:4px 8px; border-radius:999px}
-    .muted{color:var(--muted); font-size:14px}
+
 
     /* Footer */
     footer{margin-top:28px; padding:20px 0; border-top:1px solid #efe7da; color:var(--muted); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px}
@@ -55,8 +47,7 @@
 <body>
   <header>
     <div class="container h-inner">
-      <a class="brand" href="#"><span class="logo">🍳</span><span>Receta demo</span></a>
-      <small class="pill">Solo visual</small>
+      <a class="brand" href="../Jamesacostac"><span class="logo">🍳</span><span>La Buena Mesa</span></a>
     </div>
   </header>
 
@@ -159,22 +150,117 @@
 
     // Demo automático (puedes quitar este bloque en producción)
     (function demo(){
-      const demoData = [{
-        title: 'Pasta pomodoro en 20 minutos',
-        description: 'Tomates maduros, ajo y albahaca fresca. Una receta rápida, aromática y con pocos ingredientes.',
-        heroImage: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1600&auto=format&fit=crop',
-        time: '20 min',
-        servings: 2,
-        difficulty: 'Fácil',
-        steps: [
-          { title: 'Mise en place', time: '5 min', image: 'https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?q=80&w=1600&auto=format&fit=crop', text: 'Lava los tomates, pela el ajo y prepara hojas de albahaca. Corta los tomates en cubos pequeños.' },
-          { title: 'Sofríe el ajo', time: '2 min', image: 'https://images.unsplash.com/photo-1568158879083-c42864fb09b0?q=80&w=1600&auto=format&fit=crop', text: 'Calienta aceite de oliva en una sartén amplia. Agrega el ajo laminado y dóralo ligeramente sin quemar.' },
-          { title: 'Cocina el tomate', time: '8 min', image: 'https://images.unsplash.com/photo-1476127390673-0e4b7a4b1653?q=80&w=1600&auto=format&fit=crop', text: 'Añade el tomate picado, una pizca de sal y cocina a fuego medio hasta que se vuelva una salsa jugosa.' },
-          { title: 'Cuece la pasta', time: '7–9 min', image: 'https://images.unsplash.com/photo-1523987355523-c7b5b0dd90c3?q=80&w=1600&auto=format&fit=crop', text: 'Hierve la pasta en abundante agua con sal hasta que esté al dente. Reserva una taza del agua de cocción.' },
-          { title: 'Mezcla y emulsiona', time: '2 min', image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=1600&auto=format&fit=crop', text: 'Pasa la pasta a la sartén con la salsa. Agrega un chorrito del agua de cocción y saltea para emulsionar.' },
-
-        ]
-      }];
+      const demoData = [
+  {
+    "title": "Panqueques esponjosos",
+    "description": "Clásicos panqueques suaves y aireados, ideales para el desayuno con miel, frutas o mantequilla.",
+    "heroImage": "https://images.unsplash.com/photo-1587731352854-9cbf91f11b6f?q=80&w=1600&auto=format&fit=crop",
+    "time": "25 min",
+    "servings": 4,
+    "difficulty": "Fácil",
+    "steps": [
+      {
+        "title": "Prepara la mezcla",
+        "time": "5 min",
+        "image": "https://images.unsplash.com/photo-1556912998-6e2ee4a2a02e?q=80&w=1600&auto=format&fit=crop",
+        "text": "En un bol mezcla harina, polvo de hornear, azúcar y sal. En otro bol bate leche, huevo y mantequilla derretida. Combina ambos suavemente."
+      },
+      {
+        "title": "Calienta la sartén",
+        "time": "2 min",
+        "image": "https://images.unsplash.com/photo-1525054098605-8e762c017741?q=80&w=1600&auto=format&fit=crop",
+        "text": "Engrasa ligeramente una sartén antiadherente y caliéntala a fuego medio-bajo."
+      },
+      {
+        "title": "Cocina los panqueques",
+        "time": "15 min",
+        "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1600&auto=format&fit=crop",
+        "text": "Vierte un cucharón de mezcla y cocina hasta que aparezcan burbujas en la superficie. Voltea y dora por el otro lado."
+      },
+      {
+        "title": "Sirve con toppings",
+        "time": "3 min",
+        "image": "https://images.unsplash.com/photo-1541592106381-f3e06cc4b9af?q=80&w=1600&auto=format&fit=crop",
+        "text": "Apila los panqueques y acompaña con miel, frutas frescas, mantequilla o lo que prefieras."
+      }
+    ]
+  },
+  {
+    "title": "Ensalada primavera",
+    "description": "Una ensalada fresca, colorida y ligera, con verduras de temporada y un aderezo sencillo.",
+    "heroImage": "https://pbs.twimg.com/media/FreshAndEasySpringSaladRecipesForEveryOccasion.jpg",  
+    "time": "15 min",
+    "servings": 2,
+    "difficulty": "Muy fácil",
+    "steps": [
+      {
+        "title": "Lava y corta vegetales",
+        "time": "5 min",
+        "image": "https://images.unsplash.com/photo-1572449043416-55f4685c9bbf?q=80&w=1600&auto=format&fit=crop",
+        "text": "Lava lechugas, pepino, rabanitos y tomates cherry. Corta todo en piezas pequeñas o láminas."
+      },
+      {
+        "title": "Prepara el aderezo",
+        "time": "3 min",
+        "image": "https://images.unsplash.com/photo-1568605116018-411dbf0fbc42?q=80&w=1600&auto=format&fit=crop",
+        "text": "Mezcla aceite de oliva, jugo de limón, sal y pimienta. Opcional: agrega un poco de miel o mostaza."
+      },
+      {
+        "title": "Mezcla la ensalada",
+        "time": "5 min",
+        "image": "https://images.unsplash.com/photo-1524592094714-0f0654e20314?q=80&w=1600&auto=format&fit=crop",
+        "text": "En un bol grande mezcla los vegetales y agrega el aderezo. Mezcla suavemente para integrar sabores."
+      },
+      {
+        "title": "Sirve fresca",
+        "time": "2 min",
+        "image": "https://images.unsplash.com/photo-1615486364155-9fbe7fa7f8de?q=80&w=1600&auto=format&fit=crop",
+        "text": "Sirve de inmediato y, si lo deseas, añade semillas, queso fresco o frutos secos."
+      }
+    ]
+  },
+  {
+    "title": "Galletas de chispas",
+    "description": "Galletas clásicas con chispas de chocolate, crujientes por fuera y suaves por dentro.",
+    "heroImage": "https://images.unsplash.com/photo-1590080876599-2a46a8a98b89?q=80&w=1600&auto=format&fit=crop",
+    "time": "30 min",
+    "servings": 12,
+    "difficulty": "Media",
+    "steps": [
+      {
+        "title": "Mezcla ingredientes secos",
+        "time": "3 min",
+        "image": "https://images.unsplash.com/photo-1625862858022-7b107b4c5f2e?q=80&w=1600&auto=format&fit=crop",
+        "text": "En un bol combina harina, polvo de hornear, bicarbonato y una pizca de sal."
+      },
+      {
+        "title": "Bate la mantequilla y azúcar",
+        "time": "5 min",
+        "image": "https://images.unsplash.com/photo-1625862857760-5c7286213b43?q=80&w=1600&auto=format&fit=crop",
+        "text": "Bate mantequilla con azúcar morena y blanca hasta que quede esponjoso. Agrega un huevo y esencia de vainilla."
+      },
+      {
+        "title": "Agrega harina y chispas",
+        "time": "5 min",
+        "image": "https://images.unsplash.com/photo-1617196037299-9c7a509a68e1?q=80&w=1600&auto=format&fit=crop",
+        "text": "Añade poco a poco la mezcla de harina. Incorpora las chispas de chocolate."
+      },
+      {
+        "title": "Forma y hornea",
+        "time": "15–18 min",
+        "image": "https://images.unsplash.com/photo-1589984662646-7c7c7cbbbe5d?q=80&w=1600&auto=format&fit=crop",
+        "text": "Forma bolitas y colócalas en una bandeja. Hornea a 180 °C hasta que los bordes estén dorados."
+      },
+      {
+        "title": "Deja enfriar",
+        "time": "2 min",
+        "image": "https://images.unsplash.com/photo-1583337130417-3346a1ea6e66?q=80&w=1600&auto=format&fit=crop",
+        "text": "Deja enfriar sobre una rejilla para que mantengan su textura crujiente por fuera y suave por dentro."
+      }
+    ]
+  }
+]
+;
       const params = new URLSearchParams(window.location.search);
       const receta = params.get("receta"); 
       feedRecipeFromJSON(demoData[receta-1]);

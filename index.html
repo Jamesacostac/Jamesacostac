@@ -1,12 +1,12 @@
 <html>
-    <head>
-            <link rel="stylesheet" href="style.css">
 
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-    </head>
-    <body>
+<body>
 
-    <nav class="navbar" aria-label="Principal">
+  <nav class="navbar" aria-label="Principal">
     <div class="container nav-inner">
       <a class="brand" href="#inicio" aria-label="Inicio">
         <span class="logo">🍷​</span>
@@ -16,7 +16,8 @@
         <a href="#recetas" role="menuitem">Recetas</a>
         <a href="#categorias" role="menuitem">Categorías</a>
       </div>
-      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú">☰</button>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu"
+        aria-label="Abrir menú">☰</button>
     </div>
     <div class="container">
       <div id="mobileMenu" class="menu" hidden="">
@@ -26,66 +27,77 @@
     </div>
   </nav>
 
-    <header class="hero container" id="inicio">
+  <header class="hero container" id="inicio">
     <div class="hero-grid">
       <div>
-        
+
         <h1>Explora, cocina y comparte tus recetas favoritas</h1>
         <p class="lead">¡Bienvenido a tu espacio de cocina saludable! 🥗
-Aquí encontrarás recetas deliciosas, fáciles y nutritivas para cuidar tu cuerpo sin renunciar al sabor. ¡Empieza a cocinar con alegría y bienestar! 
-.</p>
+          Aquí encontrarás recetas deliciosas, fáciles y nutritivas para cuidar tu cuerpo sin renunciar al sabor.
+          ¡Empieza a cocinar con alegría y bienestar!
+          .</p>
         <form class="search" onsubmit="event.preventDefault(); alert('Buscar: ' + this.q.value)">
-          <input name="q" type="search" placeholder="Busca una receta (ej. lasaña, arepas, tiramisú)" aria-label="Buscar recetas">
+          <input name="q" type="search" placeholder="Busca una receta (ej. lasaña, arepas, tiramisú)"
+            aria-label="Buscar recetas">
           <button class="btn" type="submit">Buscar</button>
         </form>
       </div>
+
+      <a href="recetas.html?receta=2">
       <article class="hero-card" aria-labelledby="receta-destacada">
         <img src="./img/pasta_pomodoro.jpg" alt="Plato de pasta casera con tomate y albahaca">
         <div class="p">
           <span class="tag">Destacada</span>
           <h2 id="receta-destacada">Pasta pomodoro en 20 minutos</h2>
-          <p class="muted">Tomates maduros, ajo, albahaca y un chorrito de aceite de oliva. Cena lista sin complicaciones.</p>
+          <p class="muted">Tomates maduros, ajo, albahaca y un chorrito de aceite de oliva. Cena lista sin
+            complicaciones.</p>
         </div>
       </article>
+      <a>
     </div>
   </header>
 
+  
   <section id="recetas" class="container" aria-labelledby="t-recetas">
     <h2 id="t-recetas" class="section-title">Recetas destacadas</h2>
     <div class="grid">
       <a href="recetas.html?receta=1">
-      <article class="card" >
-        <img src="./img/panqueques.jpg" alt="Panqueques esponjosos con frutos rojos">
-        <div class="c">
-          <h3>Panqueques esponjosos</h3>
-          <p>Clásicos del desayuno, con truco para que queden altos y aireados.</p>
-          <div class="meta"><span>⏱️ 25 min</span><span>•</span><span>🥞 Fácil</span></div>
-        </div>
-      </article>
-    </a>
-      <article class="card">
-        <img src="./img/ensalada.webp" alt="Ensalada fresca con aguacate y garbanzos">
-        <div class="c">
-          <h3>Ensalada primavera</h3>
-          <p>Verde, crujiente y proteica gracias a los garbanzos y el aguacate.</p>
-          <div class="meta"><span>⏱️ 15 min</span><span>•</span><span>🥗 Muy fácil</span></div>
-        </div>
-      </article>
-      <article class="card">
-        <img src="./img/galletas.avif" alt="Galletas caseras de chispas de chocolate">
-        <div class="c">
-          <h3>Galletas de chispas</h3>
-          <p>Crujientes por fuera y suaves por dentro. El clásico que nunca falla.</p>
-          <div class="meta"><span>⏱️ 30 min</span><span>•</span><span>🍪 Fácil</span></div>
-        </div>
-      </article>
+        <article class="card">
+          <img src="./img/panqueques.jpg" alt="Panqueques esponjosos con frutos rojos">
+          <div class="c">
+            <h3>Panqueques esponjosos</h3>
+            <p>Clásicos del desayuno, con truco para que queden altos y aireados.</p>
+            <div class="meta"><span>⏱️ 25 min</span><span>•</span><span>🥞 Fácil</span></div>
+          </div>
+        </article>
+      </a>
+      <a href="recetas.html?receta=2">
+        <article class="card">
+          <img src="./img/ensalada.webp" alt="Ensalada fresca con aguacate y garbanzos">
+          <div class="c">
+            <h3>Ensalada primavera</h3>
+            <p>Verde, crujiente y proteica gracias a los garbanzos y el aguacate.</p>
+            <div class="meta"><span>⏱️ 15 min</span><span>•</span><span>🥗 Muy fácil</span></div>
+          </div>
+        </article>
+      </a>
+      <a href="recetas.html?receta=3">
+        <article class="card">
+          <img src="./img/galletas.avif" alt="Galletas caseras de chispas de chocolate">
+          <div class="c">
+            <h3>Galletas de chispas</h3>
+            <p>Crujientes por fuera y suaves por dentro. El clásico que nunca falla.</p>
+            <div class="meta"><span>⏱️ 30 min</span><span>•</span><span>🍪 Fácil</span></div>
+          </div>
+        </article>
+      </a>
     </div>
   </section>
 
-   <section id="consejos" class="container" aria-labelledby="t-consejos">
+  <section id="consejos" class="container" aria-labelledby="t-consejos">
     <h2 id="t-consejos" class="section-title">Consejos rápidos</h2>
     <div class="newsletter">
-     
+
       <div class="tips" aria-label="Lista de consejos rápidos">
         <div class="tip">💡 Tuesta las especias 30–60 s para potenciar sabor.</div>
         <div class="tip">🧂 Sala en capas: durante la cocción, no solo al final.</div>
@@ -96,31 +108,31 @@ Aquí encontrarás recetas deliciosas, fáciles y nutritivas para cuidar tu cuer
 
 
 
-    </body>
+</body>
 
-    <footer>
-         <div class="container foot">
-      <small>© <span id="year">2025</span> La Buena   Cocina. Hecho con ❤️ y buenos ingredientes.</small>
-      <div style="display:flex; gap:14px">
-        <a href="#inicio">Inicio</a>
-        <a href="#categorias">Categorías</a>
-        <a href="#consejos">Consejos</a>
-      </div>
+<footer>
+  <div class="container foot">
+    <small>© <span id="year">2025</span> La Buena Cocina. Hecho con ❤️ y buenos ingredientes.</small>
+    <div style="display:flex; gap:14px">
+      <a href="#inicio">Inicio</a>
+      <a href="#categorias">Categorías</a>
+      <a href="#consejos">Consejos</a>
     </div>
-    </footer>
+  </div>
+</footer>
 
-    <script>
-    // Año dinámico en footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-    // Menú móvil accesible
-    const btn = document.getElementById('menuBtn');
-    const menu = document.getElementById('mobileMenu');
-    btn.addEventListener('click', ()=>{
-      const open = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!open));
-      menu.hidden = open; // si estaba abierto, ocultar
-      menu.style.display = open ? 'none' : 'flex';
-    });
-  </script>
+<script>
+  // Año dinámico en footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+  // Menú móvil accesible
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    menu.hidden = open; // si estaba abierto, ocultar
+    menu.style.display = open ? 'none' : 'flex';
+  });
+</script>
 
 </html>
