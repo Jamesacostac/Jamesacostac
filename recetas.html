@@ -47,7 +47,7 @@
 <body>
   <header>
     <div class="container h-inner">
-      <a class="brand" href="../Jamesacostac"><span class="logo">🍳</span><span>La Buena Mesa</span></a>
+      <a class="brand" href="../Jamesacostac"><span class="logo">🍷</span><span>La Buena Mesa</span></a>
     </div>
   </header>
 
@@ -65,6 +65,15 @@
       </div>
       <img id="hero-img" src="" alt="Imagen principal de la receta" />
     </section>
+
+     <h2 class="section-title">ingredientes</h2>
+    <div class="step-card">
+      <ul id="ingredientes">
+        <li>2 tomates frescos</li>
+      </ul>
+    </div>
+   
+    
 
     <!-- Lista de pasos -->
     <h2 class="section-title">Pasos</h2>
@@ -88,6 +97,7 @@
       const pillTime = document.getElementById('pill-time');
       const pillSrv = document.getElementById('pill-servings');
       const pillDiff = document.getElementById('pill-difficulty');
+      const lingedicentes = document.getElementById('ingredientes');
 
       t.textContent = data.title || 'Receta sin título';
       d.textContent = data.description || '';
@@ -103,8 +113,18 @@
       if(data.difficulty){ pillDiff.textContent = `🍝 ${data.difficulty}`; pillDiff.hidden = false; } else { pillDiff.hidden = true; }
 
       // Pasos
-      const stepsRoot = document.getElementById('steps');
+      let stepsRoot = document.getElementById('ingredientes');
       stepsRoot.innerHTML = '';
+
+      (data.ingredientes || []).forEach((st, idx) => {
+        const card = document.createElement('li');
+        card.innerHTML = st;
+        stepsRoot.appendChild(card);
+      });
+
+      stepsRoot = document.getElementById('steps');
+      stepsRoot.innerHTML = '';
+
       (data.steps || []).forEach((st, idx) => {
         const card = document.createElement('article');
         card.className = 'step-card';
@@ -132,13 +152,14 @@
       return data;
     }
 
-    // Demo automático (puedes quitar este bloque en producción)
+ 
     (function demo(){
       const demoData = [
   {
     "title": "Panqueques esponjosos",
     "description": "Clásicos panqueques suaves y aireados, ideales para el desayuno con miel, frutas o mantequilla.",
-    "heroImage": "https://images.unsplash.com/photo-1587731352854-9cbf91f11b6f?q=80&w=1600&auto=format&fit=crop",
+    "ingredientes":["Para la masa:" ,"190 g de harina de trigo de uso común","2 cucharaditas de levadura química o polvos de hornear","1 pizca de sal","25 g de azúcar", "1 huevo mediano"," 40 g de mantequilla fundida para la masa (y un poco más para pincelar la sartén)", "240 ml de leche entera (o bien, buttermilk o suero de leche)", "Para acompañar:", "Mantequilla","Jarabe de arce o miel"],
+    "heroImage": "./img/panqueques.jpg",
     "time": "25 min",
     "servings": 4,
     "difficulty": "Fácil",
@@ -172,6 +193,7 @@
   {
     "title": "Ensalada primavera",
     "description": "Una ensalada fresca, colorida y ligera, con verduras de temporada y un aderezo sencillo.",
+ "ingredientes":[],
     "heroImage": "https://pbs.twimg.com/media/FreshAndEasySpringSaladRecipesForEveryOccasion.jpg",  
     "time": "15 min",
     "servings": 2,
@@ -206,6 +228,7 @@
   {
     "title": "Galletas de chispas",
     "description": "Galletas clásicas con chispas de chocolate, crujientes por fuera y suaves por dentro.",
+     "ingredientes":[],
     "heroImage": "https://images.unsplash.com/photo-1590080876599-2a46a8a98b89?q=80&w=1600&auto=format&fit=crop",
     "time": "30 min",
     "servings": 12,
